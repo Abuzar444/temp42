@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_API_KEY;
+const supabaseKey = process.env.SUPABASE_KEY;
 const bucketName = "home-decor-bucket";
 const imageFolder = "productImages";
 const supabase = createClient(supabaseUrl as string, supabaseKey as string);
