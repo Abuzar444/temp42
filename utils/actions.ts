@@ -369,20 +369,15 @@ export async function getExistingReview({ productID }: { productID: string }) {
 
 export async function getNumOfItemsInCart() {
   const { userId } = auth();
-  try {
-    const numOfItems = await db.cart.findFirst({
-      where: {
-        clerkId: userId || "",
-      },
-      select: {
-        numOfItems: true,
-      },
-    });
-    return numOfItems?.numOfItems || 0;
-  } catch (error) {
-    console.log(error);
-    return getError(error);
-  }
+  const numOfItems = await db.cart.findFirst({
+    where: {
+      clerkId: userId ?? "",
+    },
+    select: {
+      numOfItems: true,
+    },
+  });
+  return numOfItems?.numOfItems || 0;
 }
 
 //CART HELPER FUNCTIONS START
