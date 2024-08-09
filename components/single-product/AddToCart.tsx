@@ -1,7 +1,6 @@
 "use client";
 import { auth } from "@clerk/nextjs/server";
 import { Button } from "../ui/button";
-import { SignInButton } from "@clerk/nextjs";
 import FormContainer from "../form/FormContainer";
 import SelectInput from "../form/SelectInput";
 import { SubmitButton } from "../form/Buttons";
