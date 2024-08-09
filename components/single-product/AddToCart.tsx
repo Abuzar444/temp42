@@ -1,3 +1,4 @@
+"use client";
 import { auth } from "@clerk/nextjs/server";
 import { Button } from "../ui/button";
 import { SignInButton } from "@clerk/nextjs";
