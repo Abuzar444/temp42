@@ -1,3 +1,4 @@
+"use client";
 import { links } from "@/utils/links";
 import { Button } from "../ui/button";
 import {
@@ -20,12 +21,12 @@ function LinksDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">
-          <GrTextAlignLeft className="h-[1.2rem] w-[1.2rem]" />
+        <Button variant='outline'>
+          <GrTextAlignLeft className='h-[1.2rem] w-[1.2rem]' />
           <UserIcon />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent sideOffset={10} align="start" className="w-40">
+      <DropdownMenuContent sideOffset={10} align='start' className='w-40'>
         <SignedIn>
           {links.map((link, index) => {
             if (!isAdminUser && link.label === "dashboard") return null;
@@ -33,7 +34,7 @@ function LinksDropdown() {
               <DropdownMenuItem key={index}>
                 <Link
                   href={link.href}
-                  className="capitalize w-full tracking-wide"
+                  className='capitalize w-full tracking-wide'
                 >
                   {link.label}
                 </Link>
@@ -47,14 +48,14 @@ function LinksDropdown() {
         </SignedIn>
         <SignedOut>
           <DropdownMenuItem>
-            <SignInButton mode="modal">
-              <button className="w-full text-left tracking-wide">Log In</button>
+            <SignInButton mode='modal'>
+              <button className='w-full text-left tracking-wide'>Log In</button>
             </SignInButton>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <SignUpButton mode="modal">
-              <button className="w-full text-left tracking-wide">
+            <SignUpButton mode='modal'>
+              <button className='w-full text-left tracking-wide'>
                 Register
               </button>
             </SignUpButton>

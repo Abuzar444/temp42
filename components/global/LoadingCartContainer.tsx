@@ -1,4 +1,4 @@
-"use client";
+
 import { Skeleton } from "../ui/skeleton";
 
 function LoadingCartContainer() {
