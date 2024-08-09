@@ -1,4 +1,3 @@
-"use client";
 import { auth } from "@clerk/nextjs/server";
 import { Button } from "../ui/button";
 import FormContainer from "../form/FormContainer";
