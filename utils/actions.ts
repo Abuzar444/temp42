@@ -493,7 +493,7 @@ export async function addProductToCart(
       cartID: cart.id,
       amount: Number(amount),
     });
-    // await updateCart(cart);
+    await updateCart(cart);
   } catch (error) {
     return getError(error);
   }
