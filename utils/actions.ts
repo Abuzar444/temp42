@@ -29,6 +29,7 @@ async function getAdminUser() {
 }
 
 function getError(error: unknown): { message: string } {
+  console.log(error);
   if (error instanceof Error) return { message: error.message };
   return { message: "Something went wrong" };
 }
@@ -73,7 +74,7 @@ export async function fetchSingleProduct({ productID }: { productID: string }) {
     },
   });
   if (!findProduct) {
-    return redirect("/");
+    redirect("/");
   }
   return findProduct;
 }
@@ -368,19 +369,30 @@ export async function getExistingReview({ productID }: { productID: string }) {
 
 export async function getNumOfItemsInCart() {
   const { userId } = auth();
-  const numOfItems = await db.cart.findFirst({
-    where: {
-      clerkId: userId || "",
-    },
-    select: {
-      numOfItems: true,
-    },
-  });
-  return numOfItems?.numOfItems || 0;
+  try {
+    const numOfItems = await db.cart.findFirst({
+      where: {
+        clerkId: userId || "",
+      },
+      select: {
+        numOfItems: true,
+      },
+    });
+    return numOfItems?.numOfItems || 0;
+  } catch (error) {
+    console.log(error);
+    return getError(error);
+  }
 }
 
 //CART HELPER FUNCTIONS START
-
+const includeProductClause = {
+  cartItems: {
+    include: {
+      product: true,
+    },
+  },
+};
 export async function fetchOrCreateCart({
   userID,
   errorIfNotFound = false,
@@ -392,6 +404,7 @@ export async function fetchOrCreateCart({
     where: {
       clerkId: userID,
     },
+    include: includeProductClause,
   });
   if (!cart && errorIfNotFound) throw new Error("Cart not found.");
   if (!cart) {
@@ -399,6 +412,7 @@ export async function fetchOrCreateCart({
       data: {
         clerkId: userID,
       },
+      include: includeProductClause,
     });
   }
   return cart;
