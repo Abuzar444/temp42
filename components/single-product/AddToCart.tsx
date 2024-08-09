@@ -10,9 +10,9 @@ function AddToCart({ productID }: { productID: string }) {
   const { userId } = auth();
   if (!userId) {
     return (
-      <SignInButton mode='modal'>
+      <>
         <Button className='uppercase tracking-wider my-4'>Add to cart</Button>
-      </SignInButton>
+      </>
     );
   }
 

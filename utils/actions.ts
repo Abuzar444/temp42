@@ -488,7 +488,7 @@ export async function editOrCreateCartItem({
 
 export async function addProductToCart(
   { productID }: { productID: string },
-  prevState: InitialFormState,
+  prevState: any,
   formData: FormData
 ) {
   try {
