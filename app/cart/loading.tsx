@@ -1,5 +1,3 @@
-"use client";
-
 import LoadingCartContainer from "@/components/global/LoadingCartContainer";
 
 function loading() {

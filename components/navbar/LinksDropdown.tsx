@@ -1,4 +1,3 @@
-"use client";
 import { links } from "@/utils/links";
 import { Button } from "../ui/button";
 import {
